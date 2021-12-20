@@ -13,17 +13,40 @@
   <link rel="stylesheet" href="css/reset.css">
   <link rel="stylesheet" href="css/layout.css">
   <link rel="stylesheet" href="css/styles.css">
+  <link href="https://fonts.googleapis.com/css2?family=Barlow:wght@400;600;700;800&family=Montserrat:wght@100&family=Proza+Libre:wght@400;500&family=Raleway:wght@100&display=swap" rel="stylesheet">
 </head>
 <body>
   <header>
-  </header>
-  <main>
-    <div data-view="entry-form">
-      <form action="">
-
-      </form>
+    <div class="container">
+      <div class="row">
+        <div class="column-full">
+          <h2>Code Journal</h2>
+        </div>
+      </div>
     </div>
+  </header>
+  <main class="container">
+    <form class="view" data-view="entry-form">
+      <div class="row">
+        <div class="column-half">
+          <h1>New Entry</h1>
+          <img class="photo" src="images/placeholder-image-square.jpg" alt="photo">
+        </div>
+        <div class="column-half title-margin">
+          <h3>Title</h3>
+          <input class="title" type="text">
+          <h3>Photo URL</h3>
+          <input class="photo-url" type="text">
+        </div>
+        <div class="column-full">
+          <h3>Notes</h3>
+          <textarea name="notes" id="notes" cols="30" rows="6"></textarea>
+          <button>SAVE</button>
+        </div>
+      </div>
+    </form>
   </main>
+
   <script src="js/data.js"></script>
   <script src="js/main.js"></script>
 </body>
