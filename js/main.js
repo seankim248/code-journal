@@ -16,7 +16,7 @@ $form.addEventListener('submit', function (e) {
   for (var i = 0; i < $inputs.length; i++) {
     obj[$inputs[i].name] = $inputs[i].value;
   }
-  obj.nextEntryId = data.nextEntryId;
+  obj.entryId = data.nextEntryId;
   data.nextEntryId++;
   data.entries.unshift(obj);
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
