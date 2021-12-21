@@ -19,6 +19,10 @@
 }
 
 @media screen and (min-width: 768px) {
+  .title-margin {
+    margin-top: 105px;
+  }
+
   .container {
     max-width: 900px;
   }
