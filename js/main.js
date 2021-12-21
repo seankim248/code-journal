@@ -4,7 +4,8 @@
 var $photoUrl = document.querySelector('.photo-url');
 var $photo = document.querySelector('.photo');
 var $form = document.querySelector('form');
-var $inputs = document.querySelector('form').elements;
+var $title = document.querySelector('.title');
+var $notes = document.querySelector('.notes');
 
 $photoUrl.addEventListener('input', function (e) {
   $photo.setAttribute('src', e.target.value);
@@ -12,10 +13,12 @@ $photoUrl.addEventListener('input', function (e) {
 
 $form.addEventListener('submit', function (e) {
   e.preventDefault();
-  var obj = {};
-  for (var i = 0; i < $inputs.length; i++) {
-    obj[$inputs[i].name] = $inputs[i].value;
-  }
+  var obj = {
+    title: $title.value,
+    photoUrl: $photoUrl.value,
+    notes: $notes.value,
+    entryId: data.nextEntryId
+  };
   obj.entryId = data.nextEntryId;
   data.nextEntryId++;
   data.entries.unshift(obj);
