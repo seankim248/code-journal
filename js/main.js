@@ -54,7 +54,7 @@ function createEntryDOMTree(obj) {
   $row.appendChild($columnHalf);
 
   var $img = document.createElement('img');
-  $img.setAttribute('src', 'images/placeholder-image-square.jpg');
+  $img.setAttribute('src', obj.photoUrl);
   $img.setAttribute('alt', 'placeholder');
   $columnHalf.appendChild($img);
 
@@ -63,16 +63,18 @@ function createEntryDOMTree(obj) {
   $row.appendChild($secondColumnHalf);
 
   var $h3 = document.createElement('h3');
-  $h3.textContent = 'Placeholder Image';
+  $h3.textContent = obj.title;
   $secondColumnHalf.appendChild($h3);
 
   var $p = document.createElement('p');
-  $p.textContent = 'Lorem ipsum dolor sit amet consectetur adipisicing elit. Dolore accusantium quaerat iure. Repudiandae magni, libero numquam reiciendis atque voluptates id fugit distinctio facilis asperiores at. Facilis corrupti, dolor sed assumenda laboriosam rerum iste fugit dolores vero nam earum placeat amet doloremque, magnam eaque unde, sint impedit iure officia minima magni!';
+  $p.textContent = obj.notes;
   $secondColumnHalf.appendChild($p);
 
   return $li;
 }
 
-for (var i = 0; i < data.entries.length; i++) {
-  $ul.appendChild(createEntryDOMTree(data.entries[i]));
-}
+window.addEventListener('DOMContentLoaded', function (e) {
+  for (var i = 0; i < data.entries.length; i++) {
+    $ul.appendChild(createEntryDOMTree(data.entries[i]));
+  }
+});
