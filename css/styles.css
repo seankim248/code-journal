@@ -9,14 +9,27 @@ header {
 }
 
 h1 {
+  display: inline-block;
   font-weight: normal;
   font-size: 2.5rem;
 }
 
 h2 {
+  display: inline-block;
   font-weight: normal;
   margin: 0;
   color: white;
+}
+
+a {
+  margin-left: 25px;
+  font-size: 1.3rem;
+  color: white;
+  text-decoration: none;
+}
+
+p {
+  margin-bottom: 20px;
 }
 
 label {
@@ -63,4 +76,34 @@ button {
   color: white;
   padding: 7px 17px;
   border-radius: 5px;
+}
+
+ul {
+  list-style-type: none;
+  margin: 0;
+  padding: 0;
+}
+
+.align-items-center {
+  align-items: center;
+}
+
+.entries-header {
+  margin: 0;
+}
+
+.text-align-center {
+  text-align: center;
+}
+
+.hidden {
+  visibility: hidden;
+}
+
+.active {
+  visibility: visible;
+}
+
+.new-btn {
+  margin-top: 30px;
 }
