@@ -8,6 +8,7 @@ var $title = document.querySelector('.title');
 var $notes = document.querySelector('.notes');
 var $header = document.querySelector('header');
 var $ul = document.querySelector('ul');
+var $entryPage = document.querySelector('.entryPage');
 var $views = document.querySelectorAll('.view');
 
 $photoUrl.addEventListener('input', function (e) {
@@ -27,6 +28,8 @@ $form.addEventListener('submit', function (e) {
   data.entries.unshift(obj);
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
+  $form.className = 'view hidden';
+  $entryPage.className = 'view';
 });
 
 $header.addEventListener('click', function (e) {
