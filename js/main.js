@@ -10,6 +10,7 @@ var $header = document.querySelector('header');
 var $ul = document.querySelector('ul');
 var $entryPage = document.querySelector('.entryPage');
 var $newBtn = document.querySelector('.new-btn');
+var $noEntries = document.querySelector('.no-entries');
 var $views = document.querySelectorAll('.view');
 
 $photoUrl.addEventListener('input', function (e) {
@@ -27,6 +28,8 @@ $form.addEventListener('submit', function (e) {
   obj.entryId = data.nextEntryId;
   data.nextEntryId++;
   data.entries.unshift(obj);
+  $ul.prepend(renderEntry(obj));
+  data.view = 'entries';
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
   $form.className = 'view hidden';
@@ -39,6 +42,7 @@ $header.addEventListener('click', function (e) {
     for (var i = 0; i < $views.length; i++) {
       if ($views[i].getAttribute('data-view') === dataView) {
         $views[i].className = 'view';
+        data.view = dataView;
       } else {
         $views[i].className = 'view hidden';
       }
@@ -90,5 +94,8 @@ document.addEventListener('DOMContentLoaded', function (e) {
   }
   for (var i = 0; i < data.entries.length; i++) {
     $ul.appendChild(renderEntry(data.entries[i]));
+  }
+  if (data.entries.length !== 0) {
+    $noEntries.className = 'text-align-center no-entries hidden';
   }
 });
