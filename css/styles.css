@@ -26,6 +26,7 @@ h3 {
 }
 
 i {
+  cursor: pointer;
   color: #562b82;
   font-size: 1.4rem;
   margin-top: 20px;

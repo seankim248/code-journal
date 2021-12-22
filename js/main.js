@@ -42,7 +42,9 @@ $newBtn.addEventListener('click', function (e) {
 });
 
 $ul.addEventListener('click', function (e) {
-
+  if (e.target.nodeName === 'I') {
+    changeView('entry-form');
+  }
 });
 
 document.addEventListener('DOMContentLoaded', function (e) {
