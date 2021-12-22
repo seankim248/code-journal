@@ -50,6 +50,7 @@ document.addEventListener('DOMContentLoaded', function (e) {
 
 function renderEntry(obj) {
   var $li = document.createElement('li');
+  $li.setAttribute('data-entry-id', obj.entryId);
 
   var $row = document.createElement('div');
   $row.className = 'row margin-bottom';
