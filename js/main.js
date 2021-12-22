@@ -44,6 +44,8 @@ $newBtn.addEventListener('click', function (e) {
 $ul.addEventListener('click', function (e) {
   if (e.target.nodeName === 'I') {
     changeView('entry-form');
+    var currentEdit = parseInt(event.target.closest('li').getAttribute('data-entry-id'));
+    data.editing = currentEdit;
   }
 });
 
