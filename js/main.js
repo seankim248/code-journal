@@ -42,11 +42,7 @@ $newBtn.addEventListener('click', function (e) {
 });
 
 document.addEventListener('DOMContentLoaded', function (e) {
-  if (data.view === 'entry-form') {
-    changeView('entry-form');
-  } else {
-    changeView('entries');
-  }
+  changeView(data.view);
   for (var i = 0; i < data.entries.length; i++) {
     $ul.appendChild(renderEntry(data.entries[i]));
   }
