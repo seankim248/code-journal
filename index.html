@@ -21,6 +21,7 @@
       <div class="row">
         <div class="column-full">
           <h2>Code Journal</h2>
+          <a class="tab" href="#" data-view="entries">Entries</a>
         </div>
       </div>
     </div>
@@ -45,6 +46,14 @@
         </div>
       </div>
     </form>
+
+    <div class="view hidden" data-view="entries">
+      <div class="column-full">
+        <h1>Entries</h1><button class="new-btn">NEW</button>
+        <p class="text-align-center no-entries hidden">No Entries have been recorded.</p>
+      </div>
+      <ul></ul>
+    </div>
   </main>
 
   <script src="js/data.js"></script>
