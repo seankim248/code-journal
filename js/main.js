@@ -6,11 +6,9 @@ var $photo = document.querySelector('.photo');
 var $form = document.querySelector('form');
 var $title = document.querySelector('.title');
 var $notes = document.querySelector('.notes');
-var $header = document.querySelector('header');
+var $entriesTab = document.querySelector('a');
 var $ul = document.querySelector('ul');
-var $entryPage = document.querySelector('.entryPage');
 var $newBtn = document.querySelector('.new-btn');
-var $noEntries = document.querySelector('.no-entries');
 var $views = document.querySelectorAll('.view');
 
 $photoUrl.addEventListener('input', function (e) {
@@ -32,28 +30,26 @@ $form.addEventListener('submit', function (e) {
   data.view = 'entries';
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
-  $form.className = 'view hidden';
-  $entryPage.className = 'view';
+  changeView('entries');
 });
 
-$header.addEventListener('click', function (e) {
-  if (e.target.matches('.tab')) {
-    var dataView = e.target.getAttribute('data-view');
-    for (var i = 0; i < $views.length; i++) {
-      if ($views[i].getAttribute('data-view') === dataView) {
-        $views[i].className = 'view';
-        data.view = dataView;
-      } else {
-        $views[i].className = 'view hidden';
-      }
-    }
-  }
+$entriesTab.addEventListener('click', function (e) {
+  changeView('entries');
 });
 
 $newBtn.addEventListener('click', function (e) {
-  $form.className = 'view';
-  $entryPage.className = 'view hidden';
-  data.view = 'entry-form';
+  changeView('entry-form');
+});
+
+document.addEventListener('DOMContentLoaded', function (e) {
+  if (data.view === 'entry-form') {
+    changeView('entry-form');
+  } else {
+    changeView('entries');
+  }
+  for (var i = 0; i < data.entries.length; i++) {
+    $ul.appendChild(renderEntry(data.entries[i]));
+  }
 });
 
 function renderEntry(obj) {
@@ -87,15 +83,13 @@ function renderEntry(obj) {
   return $li;
 }
 
-document.addEventListener('DOMContentLoaded', function (e) {
-  if (data.view === 'entries') {
-    $entryPage.className = 'view';
-    $form.className = 'view hidden';
+function changeView(view) {
+  for (var i = 0; i < $views.length; i++) {
+    if ($views[i].getAttribute('data-view') === view) {
+      $views[i].className = '';
+    } else {
+      $views[i].className = 'hidden';
+    }
   }
-  for (var i = 0; i < data.entries.length; i++) {
-    $ul.appendChild(renderEntry(data.entries[i]));
-  }
-  if (data.entries.length !== 0) {
-    $noEntries.className = 'text-align-center no-entries hidden';
-  }
-});
+  data.view = view;
+}
