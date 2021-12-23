@@ -21,22 +21,25 @@ h2 {
   color: white;
 }
 
-/* h4 {
+h3 {
   display: inline-block;
-  font-family: Arial, sans-serif;
-  font-weight: 300;
-  color: red;
-  text-decoration: 1px underline;
 }
 
-h4:hover {
+h4 {
+  display: inline-block;
   cursor: pointer;
-} */
+  font-size: 1.2rem;
+  font-family: Arial, Helvetica, sans-serif;
+  color: red;
+  font-weight: 300;
+  text-decoration: 1px underline;
+}
 
 i {
   cursor: pointer;
   color: #562b82;
   font-size: 1.4rem;
+  margin-top: 20px;
   float: right;
 }
 
@@ -90,6 +93,7 @@ textarea {
 
 button {
   float: right;
+  margin-top: 15px;
   margin-bottom: 20px;
   font-size: 1.3rem;
   border: none;
