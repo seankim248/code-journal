@@ -9,8 +9,9 @@ var $notes = document.querySelector('.notes');
 var $entriesTab = document.querySelector('a');
 var $ul = document.querySelector('ul');
 var $newBtn = document.querySelector('.new-btn');
-var $views = document.querySelectorAll('.view');
+var $noEntries = document.querySelector('.no-entries');
 var $h1 = document.querySelector('h1');
+var $views = document.querySelectorAll('.view');
 
 $photoUrl.addEventListener('input', function (e) {
   $photo.setAttribute('src', e.target.value);
@@ -25,20 +26,31 @@ $form.addEventListener('submit', function (e) {
       notes: $notes.value,
       entryId: data.nextEntryId
     };
-    obj.entryId = data.nextEntryId;
     data.nextEntryId++;
     data.entries.unshift(obj);
     $ul.prepend(renderEntry(obj));
   } else {
+    var editedObj = {
+      title: $title.value,
+      photoUrl: $photoUrl.value,
+      notes: $notes.value,
+      entryId: data.editing
+    };
     for (var i = 0; i < data.entries.length; i++) {
       if (data.editing === data.entries[i].entryId) {
-        data.entries[i].title = $title.value;
-        data.entries[i].photoUrl = $photoUrl.value;
-        data.entries[i].notes = $notes.value;
+        data.entries[i] = editedObj;
+        break;
+      }
+    }
+    var $lis = document.querySelectorAll('li');
+    var editedObjTree = renderEntry(editedObj);
+    for (var j = 0; j < $lis.length; j++) {
+      if (parseInt($lis[j].getAttribute('data-entry-id')) === data.editing) {
+        $lis[j].replaceWith(editedObjTree);
       }
     }
   }
-  data.view = 'entries';
+  $noEntries.className = 'text-align-center no-entries hidden';
   $photo.setAttribute('src', 'images/placeholder-image-square.jpg');
   $form.reset();
   changeView('entries');
@@ -51,6 +63,7 @@ $entriesTab.addEventListener('click', function (e) {
 $newBtn.addEventListener('click', function (e) {
   $h1.textContent = 'New Entry';
   changeView('entry-form');
+  data.editing = null;
 });
 
 $ul.addEventListener('click', function (e) {
@@ -74,6 +87,9 @@ document.addEventListener('DOMContentLoaded', function (e) {
   changeView(data.view);
   for (var i = 0; i < data.entries.length; i++) {
     $ul.appendChild(renderEntry(data.entries[i]));
+  }
+  if (data.entries.length !== 0) {
+    $noEntries.className = 'text-align-center no-entries hidden';
   }
 });
 
