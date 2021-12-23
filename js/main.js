@@ -164,6 +164,10 @@ function renderEntry(obj) {
   $editIcon.className = 'fas fa-pen';
   $secondColumnHalf.appendChild($editIcon);
 
+  var $favoriteIcon = document.createElement('i');
+  $favoriteIcon.className = 'far fa-star';
+  $secondColumnHalf.appendChild($favoriteIcon);
+
   var $p = document.createElement('p');
   $p.textContent = obj.notes;
   $secondColumnHalf.appendChild($p);
