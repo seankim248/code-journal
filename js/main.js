@@ -16,7 +16,7 @@ var $deleteEntry = document.querySelector('.delete-entry');
 var $overlay = document.querySelector('.overlay');
 var $modal = document.querySelector('.modal');
 var $cancelBtn = document.querySelector('.cancel');
-// var $confirmBtn = document.querySelector('.confirm');
+var $confirmBtn = document.querySelector('.confirm');
 var $views = document.querySelectorAll('.view');
 
 $photoUrl.addEventListener('input', function (e) {
@@ -74,6 +74,24 @@ $deleteEntry.addEventListener('click', function (e) {
 $cancelBtn.addEventListener('click', function (e) {
   $overlay.classList.add('hidden');
   $modal.classList.add('hidden');
+});
+
+$confirmBtn.addEventListener('click', function (e) {
+  for (var i = 0; i < data.entries.length; i++) {
+    if (data.editing === data.entries[i].entryId) {
+      data.entries.splice(i, 1);
+    }
+  }
+  var $lis = document.querySelectorAll('li');
+  for (var j = 0; j < $lis.length; j++) {
+    if (parseInt($lis[j].getAttribute('data-entry-id')) === data.editing) {
+      $lis[j].remove();
+    }
+  }
+  $overlay.classList.add('hidden');
+  $modal.classList.add('hidden');
+  changeView('entries');
+  $noEntries.classList.remove('hidden');
 });
 
 $newBtn.addEventListener('click', function (e) {
