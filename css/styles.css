@@ -21,6 +21,18 @@ h2 {
   color: white;
 }
 
+h3 {
+  display: inline-block;
+}
+
+i {
+  cursor: pointer;
+  color: #562b82;
+  font-size: 1.4rem;
+  margin-top: 20px;
+  float: right;
+}
+
 a {
   margin-left: 25px;
   font-size: 1.3rem;
@@ -31,6 +43,7 @@ a {
 p {
   font-family: Arial, Helvetica, sans-serif;
   margin-bottom: 20px;
+  margin-top: 0;
 }
 
 label {
