@@ -6,7 +6,8 @@ var $photo = document.querySelector('.photo');
 var $form = document.querySelector('form');
 var $title = document.querySelector('.title');
 var $notes = document.querySelector('.notes');
-var $entriesTab = document.querySelector('a');
+var $entriesTab = document.querySelector('.entries-tab');
+var $favoritesTab = document.querySelector('.favorites-tab');
 var $ul = document.querySelector('ul');
 var $newBtn = document.querySelector('.new-btn');
 var $noEntries = document.querySelector('.no-entries');
@@ -64,6 +65,10 @@ $form.addEventListener('submit', function (e) {
 
 $entriesTab.addEventListener('click', function (e) {
   changeView('entries');
+});
+
+$favoritesTab.addEventListener('click', function (e) {
+  changeView('favorites');
 });
 
 $deleteEntry.addEventListener('click', function (e) {
