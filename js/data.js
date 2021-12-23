@@ -3,6 +3,7 @@
 var data = {
   view: 'entry-form',
   entries: [],
+  favoriteEntries: [],
   editing: null,
   nextEntryId: 1
 };
