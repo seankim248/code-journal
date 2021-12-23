@@ -12,6 +12,9 @@ var $newBtn = document.querySelector('.new-btn');
 var $noEntries = document.querySelector('.no-entries');
 var $h1 = document.querySelector('h1');
 var $h4 = document.querySelector('h4');
+var $deleteEntry = document.querySelector('.delete-entry');
+var $overlay = document.querySelector('.overlay');
+var $modal = document.querySelector('.modal');
 var $views = document.querySelectorAll('.view');
 
 $photoUrl.addEventListener('input', function (e) {
@@ -59,6 +62,11 @@ $form.addEventListener('submit', function (e) {
 
 $entriesTab.addEventListener('click', function (e) {
   changeView('entries');
+});
+
+$deleteEntry.addEventListener('click', function (e) {
+  $overlay.classList.remove('hidden');
+  $modal.classList.remove('hidden');
 });
 
 $newBtn.addEventListener('click', function (e) {
