@@ -91,7 +91,7 @@ $confirmBtn.addEventListener('click', function (e) {
   $overlay.classList.add('hidden');
   $modal.classList.add('hidden');
   changeView('entries');
-  if ($lis.length === 0) {
+  if (data.entries.length === 0) {
     $noEntries.classList.remove('hidden');
   }
 });
