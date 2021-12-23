@@ -11,6 +11,7 @@ var $ul = document.querySelector('ul');
 var $newBtn = document.querySelector('.new-btn');
 var $noEntries = document.querySelector('.no-entries');
 var $h1 = document.querySelector('h1');
+// var $h4 = document.querySelector('h4');
 var $views = document.querySelectorAll('.view');
 
 $photoUrl.addEventListener('input', function (e) {
@@ -80,6 +81,7 @@ $ul.addEventListener('click', function (e) {
     }
     $photo.setAttribute('src', $photoUrl.value);
     $h1.textContent = 'Edit Entry';
+    // $h4.className = '';
   }
 });
 
