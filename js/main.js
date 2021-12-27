@@ -18,6 +18,7 @@ var $overlay = document.querySelector('.overlay');
 var $modal = document.querySelector('.modal');
 var $cancelBtn = document.querySelector('.cancel');
 var $confirmBtn = document.querySelector('.confirm');
+var $favoritesView = document.querySelector('.favorites-view');
 var $views = document.querySelectorAll('.view');
 
 $photoUrl.addEventListener('input', function (e) {
@@ -108,10 +109,10 @@ $newBtn.addEventListener('click', function (e) {
 });
 
 $ul.addEventListener('click', function (e) {
-  if (e.target.nodeName === 'I') {
+  var currentEdit = parseInt(e.target.closest('li').getAttribute('data-entry-id'));
+  data.editing = currentEdit;
+  if (e.target.className === 'fas fa-pen') {
     changeView('entry-form');
-    var currentEdit = parseInt(e.target.closest('li').getAttribute('data-entry-id'));
-    data.editing = currentEdit;
     for (var i = 0; i < data.entries.length; i++) {
       if (currentEdit === data.entries[i].entryId) {
         $title.value = data.entries[i].title;
@@ -122,6 +123,21 @@ $ul.addEventListener('click', function (e) {
     $photo.setAttribute('src', $photoUrl.value);
     $h1.textContent = 'Edit Entry';
     $h4.className = '';
+  }
+  if (e.target.className.includes('fa-star')) {
+    if (e.target.className.includes('far')) {
+      e.target.className = 'fas fa-star';
+      for (var k = 0; k < data.entries.length; k++) {
+        if (currentEdit === data.entries[k].entryId && data.favoriteEntries.includes(data.entries[k])) {
+          data.favoriteEntries.unshift(data.entries[k]);
+        }
+        if (data.favoriteEntries.includes(data.entries[k])) {
+          e.target.className = 'fas fa-star';
+        }
+      }
+    } else if (e.target.className.includes('fas')) {
+      e.target.className = 'far fa-star';
+    }
   }
 });
 
@@ -184,4 +200,8 @@ function changeView(view) {
     }
   }
   data.view = view;
+}
+
+for (var i = 0; i < data.favoriteEntries.length; i++) {
+  $favoritesView.prepend(renderEntry(data.favoriteEntries[i]));
 }
